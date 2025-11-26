@@ -3,223 +3,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventus AI | Autonomous Logistics Workforce</title>
+    <title>Ventus AI | The AI Workforce for Supply Chain</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
                     colors: {
                         brand: {
-                            blue: '#2563EB',     // Royal Blue (Primary)
-                            dark: '#0F172A',     // Slate 900 (Text)
-                            light: '#F8FAFC',    // Slate 50 (Background)
-                            gray: '#64748B',     // Slate 500 (Subtext)
-                            surface: '#FFFFFF',  // White cards
+                            dark: '#0B1221',    /* From your Base Colors (Dark Navy) */
+                            gold: '#C6B5A0',    /* From your Accent Colors (Muted Gold) */
+                            goldLight: '#E5DACE',
+                            gray: '#8E9AAF',    /* From your Accent Colors (Grey) */
+                            white: '#FFFFFF',
                         }
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                        'scan': 'scan 3s ease-in-out infinite',
+                        'pulse-gold': 'pulseGold 2s infinite',
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+        body { background-color: #0B1221; color: #FFFFFF; }
         
-        /* Navbar Blur */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.9);
+        /* Elegant Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(to right, #C6B5A0, #E5DACE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism for Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #E2E8F0;
+            border: 1px solid rgba(198, 181, 160, 0.1);
         }
 
-        /* Subtle Grid Background */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+        /* The Scanning Animation Line */
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: #C6B5A0;
+            box-shadow: 0 0 10px #C6B5A0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
         }
 
-        .cursor-blink::after {
-            content: '|';
-            animation: blink 1s step-start infinite;
-            color: #2563EB;
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
-        @keyframes blink { 50% { opacity: 0; } }
+
+        @keyframes pulseGold {
+            0% { box-shadow: 0 0 0 0 rgba(198, 181, 160, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(198, 181, 160, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(198, 181, 160, 0); }
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed w-full z-50 glass-nav">
+    <nav class="fixed w-full z-50 bg-[#0B1221]/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-200">
-                        <i class="fa-solid fa-cube text-sm"></i>
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 border border-brand-gold rounded-full flex items-center justify-center text-brand-gold">
+                        <i class="fa-solid fa-wind text-lg"></i>
                     </div>
-                    <span class="text-xl font-bold tracking-tight text-slate-900">Ventus<span class="text-brand-blue">.ai</span></span>
+                    <span class="text-2xl font-serif font-bold tracking-wide text-white">VENTUS<span class="text-brand-gold">.AI</span></span>
                 </div>
                 
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                    <a href="#product" class="hover:text-brand-blue transition">Platform</a>
-                    <a href="#solutions" class="hover:text-brand-blue transition">Solutions</a>
-                    <a href="#integrations" class="hover:text-brand-blue transition">Integrations</a>
+                <div class="hidden md:flex space-x-10 text-sm font-medium text-brand-gray">
+                    <a href="#platform" class="hover:text-brand-gold transition duration-300">Platform</a>
+                    <a href="#solutions" class="hover:text-brand-gold transition duration-300">Solutions</a>
+                    <a href="#testimonials" class="hover:text-brand-gold transition duration-300">Customers</a>
                 </div>
 
-                <div class="hidden md:flex items-center gap-4">
-                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-slate-900">Log in</a>
-                    <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20">
-                        Book a Demo
-                    </a>
-                </div>
+                <button class="hidden md:block border border-brand-gold text-brand-gold px-6 py-2.5 rounded text-sm font-semibold hover:bg-brand-gold hover:text-brand-dark transition duration-300">
+                    Book a Demo
+                </button>
             </div>
         </div>
     </nav>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-        <div class="absolute inset-0 bg-grid"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold mb-8 animate-float">
-                <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                Automating 1M+ Logistics Tasks Daily
+    <section class="relative pt-40 pb-20 lg:pt-52 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-gold/30 text-brand-gold text-xs font-semibold tracking-widest uppercase mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                The Future of Logistics
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
                 The AI Workforce for <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Logistics & Supply Chain</span>
+                <span class="text-gold-gradient">Supply Chain Operations</span>
             </h1>
             
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Ventus agents automate the "human" work in your supply chain. We log into portals, read emails, and type data into your TMS—so your team doesn't have to.
+            <p class="text-xl text-brand-gray mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                Ventus automates the manual tasks that slow down your team. We navigate portals, read documents, and process data with human-like intelligence.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button class="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-800 transition shadow-xl hover:-translate-y-1 duration-200">
-                    See How It Works
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button class="w-full sm:w-auto bg-brand-gold text-brand-dark px-10 py-4 rounded font-bold text-lg hover:bg-white transition duration-300 shadow-[0_0_20px_rgba(198,181,160,0.3)]">
+                    Start Automating
                 </button>
-                <button class="w-full sm:w-auto bg-white border border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:border-blue-600 hover:text-blue-600 transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-play-circle text-blue-600"></i> Watch Demo
+                <button class="w-full sm:w-auto text-white px-10 py-4 rounded font-medium text-lg hover:text-brand-gold transition flex items-center gap-3">
+                    <i class="fa-solid fa-play border border-white/20 p-3 rounded-full text-xs"></i> Watch the Platform
                 </button>
             </div>
         </div>
     </section>
 
-    <section class="py-12 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform hover:scale-[1.01] transition duration-500">
-                <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 flex items-center gap-4">
-                    <div class="flex gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-400"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                    </div>
-                    <div class="bg-white px-3 py-1 rounded-md text-xs text-slate-400 flex-1 text-center font-mono">
-                        agent_workflow_v4.exe
-                    </div>
-                </div>
-                <div class="p-8 font-mono text-sm md:text-base bg-slate-50">
-                    <div class="space-y-3">
-                        <div class="flex gap-3">
-                            <span class="text-blue-600 font-bold">VENTUS:</span>
-                            <span class="text-slate-700">Connecting to Carrier Portal (CH Robinson)...</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="text-blue-600 font-bold">VENTUS:</span>
-                            <span class="text-slate-700">Found 3 active shipments.</span>
-                        </div>
-                        <div class="pl-20 border-l-2 border-slate-200 space-y-2">
-                            <div class="text-slate-500">-> Load #8812: <span class="text-green-600 font-bold">Delivered (Atlanta, GA)</span></div>
-                            <div class="text-slate-500">-> Load #8813: <span class="text-amber-600 font-bold">In Transit (Dallas, TX)</span></div>
-                        </div>
-                        <div class="flex gap-3 pt-2">
-                            <span class="text-blue-600 font-bold">VENTUS:</span>
-                            <span class="text-slate-900 cursor-blink">Updating McLeod TMS with new location data...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="solutions" class="py-24 bg-white">
+    <section class="py-12 border-y border-white/5 bg-white/2">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-blue-600 font-bold tracking-wide uppercase text-sm mb-3">Solutions</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Automate the "Busy Work"</h3>
+            <p class="text-center text-brand-gray text-xs uppercase tracking-[0.2em] mb-10">Trusted by Global Logistics Leaders</p>
+            <div class="flex flex-wrap justify-center items-center gap-16 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-earth-americas text-3xl text-brand-gold"></i>
+                    <span class="font-bold text-xl tracking-tighter">GLOBAL<span class="font-light">FREIGHT</span></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-truck-fast text-3xl text-brand-gold"></i>
+                    <span class="font-bold text-xl tracking-tighter">SWIFT<span class="font-light">LINE</span></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-anchor text-3xl text-brand-gold"></i>
+                    <span class="font-bold text-xl tracking-tighter">OCEAN<span class="font-light">CONNECT</span></span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cubes text-3xl text-brand-gold"></i>
+                    <span class="font-bold text-xl tracking-tighter">PRIME<span class="font-light">LOGISTICS</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platform" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <div>
+                <h2 class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-4">How It Works</h2>
+                <h3 class="text-4xl font-serif font-bold mb-6">We read documents like a human.</h3>
+                <p class="text-brand-gray text-lg leading-relaxed mb-8">
+                    Stop manually entering data from Rate Confirmations, BOLs, and Invoices. Ventus AI scans documents, understands the context, and enters the data directly into your TMS.
+                </p>
+                <ul class="space-y-4 text-brand-gray">
+                    <li class="flex items-center gap-4">
+                        <div class="w-6 h-6 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold text-xs"><i class="fa-solid fa-check"></i></div>
+                        <span>99.8% Extraction Accuracy</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-6 h-6 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold text-xs"><i class="fa-solid fa-check"></i></div>
+                        <span>Integrates with McLeod, MercuryGate, and CargoWise</span>
+                    </li>
+                    <li class="flex items-center gap-4">
+                        <div class="w-6 h-6 rounded-full border border-brand-gold flex items-center justify-center text-brand-gold text-xs"><i class="fa-solid fa-check"></i></div>
+                        <span>SOC2 Type II Secure</span>
+                    </li>
+                </ul>
             </div>
 
+            <div class="relative">
+                <div class="absolute inset-0 bg-brand-gold/10 blur-3xl -z-10 rounded-full"></div>
+                
+                <div class="glass-card p-8 rounded-lg relative overflow-hidden transform rotate-1 hover:rotate-0 transition duration-500">
+                    
+                    <div class="flex justify-between items-center mb-6 opacity-50">
+                        <div class="flex gap-2">
+                            <div class="w-12 h-2 bg-white/20 rounded"></div>
+                        </div>
+                        <div class="w-8 h-8 rounded bg-white/10"></div>
+                    </div>
+
+                    <div class="space-y-4 opacity-70">
+                        <div class="w-full h-2 bg-white/10 rounded"></div>
+                        <div class="w-3/4 h-2 bg-white/10 rounded"></div>
+                        <div class="w-full h-2 bg-white/10 rounded"></div>
+                        
+                        <div class="mt-8 border border-brand-gold/50 bg-brand-gold/10 p-4 rounded relative">
+                            <div class="absolute -left-2 top-4 w-4 h-4 bg-brand-dark border border-brand-gold rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-check text-[8px] text-brand-gold"></i>
+                            </div>
+                            <div class="flex justify-between text-xs text-brand-gold mb-1">
+                                <span>ORIGIN</span>
+                                <span>DESTINATION</span>
+                            </div>
+                            <div class="flex justify-between text-sm font-bold text-white">
+                                <span>Chicago, IL</span>
+                                <span>Atlanta, GA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scan-line"></div>
+                </div>
+
+                <div class="absolute -bottom-6 -right-6 bg-brand-gold text-brand-dark px-6 py-3 rounded shadow-lg font-bold text-sm animate-pulse-gold">
+                    <i class="fa-solid fa-bolt mr-2"></i> Processed in 0.4s
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-white/2">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-16">Results from the Industry</h2>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:border-blue-100 transition duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 text-xl group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Track & Trace</h4>
-                    <p class="text-slate-500 leading-relaxed">
-                        Stop calling drivers. Agents check carrier websites every 15 minutes and push real-time location updates directly to your TMS.
+                <div class="glass-card p-8 rounded-lg">
+                    <div class="text-brand-gold text-xl mb-6"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-brand-gray mb-6 leading-relaxed">
+                        "Ventus has completely transformed our track and trace department. We used to have 5 people calling drivers all day. Now, Ventus agents handle 90% of the checks automatically."
                     </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center font-serif font-bold">M</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Michael R.</div>
+                            <div class="text-brand-gold text-xs">Director of Ops, Midwest Freight</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:border-blue-100 transition duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 text-xl group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-file-invoice"></i>
+                <div class="glass-card p-8 rounded-lg border-brand-gold/30 relative">
+                    <div class="absolute top-0 right-0 p-4">
+                        <span class="text-[10px] bg-brand-gold text-brand-dark px-2 py-1 rounded font-bold">TOP RATED</span>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Invoice Auditing</h4>
-                    <p class="text-slate-500 leading-relaxed">
-                        Agents read PDF invoices from emails, match them against your rate confirmations, and approve payment or flag errors instantly.
+                    <div class="text-brand-gold text-xl mb-6"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-brand-gray mb-6 leading-relaxed">
+                        "The ability to extract data from rate cons and build loads instantly has saved us over 20 hours a week per broker. It's the most ROI-positive tool in our tech stack."
                     </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center font-serif font-bold">S</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Sarah Jenkins</div>
+                            <div class="text-brand-gold text-xs">VP Logistics, Apex Global</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl hover:border-blue-100 transition duration-300 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 text-xl group-hover:bg-blue-600 group-hover:text-white transition">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Spot Quoting</h4>
-                    <p class="text-slate-500 leading-relaxed">
-                        Respond to email quote requests in seconds. Our AI analyzes market rates and your history to send competitive quotes automatically.
+                <div class="glass-card p-8 rounded-lg">
+                    <div class="text-brand-gold text-xl mb-6"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-brand-gray mb-6 leading-relaxed">
+                        "Integration was surprisingly fast. We didn't need our IT team to build custom APIs. The Ventus agents just logged into our portals and started working."
                     </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center font-serif font-bold">D</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">David Chen</div>
+                            <div class="text-brand-gold text-xs">CTO, FastLine Logistics</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-10">Trusted by logistics leaders</p>
-            <div class="flex flex-wrap justify-center gap-12 opacity-60 grayscale hover:grayscale-0 transition duration-500">
-                <div class="text-2xl font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-box"></i> FLEXPORT</div>
-                <div class="text-2xl font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-dolly"></i> C.H. ROBINSON</div>
-                <div class="text-2xl font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-plane"></i> EXPEDITORS</div>
-                <div class="text-2xl font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-ship"></i> MAERSK</div>
+    <footer class="bg-[#050911] pt-20 pb-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="text-xl font-serif font-bold text-white">VENTUS<span class="text-brand-gold">.AI</span></span>
+                </div>
+                <p class="text-brand-gray text-sm leading-relaxed">
+                    Automating the global supply chain with autonomous AI agents.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-6">Platform</h4>
+                <ul class="space-y-3 text-sm text-brand-gray">
+                    <li><a href="#" class="hover:text-brand-gold transition">Automation Agents</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Document Processing</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Integrations</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-white font-bold mb-6">Company</h4>
+                <ul class="space-y-3 text-sm text-brand-gray">
+                    <li><a href="#" class="hover:text-brand-gold transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Careers</a></li>
+                    <li><a href="#" class="hover:text-brand-gold transition">Security</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6">Contact</h4>
+                <ul class="space-y-3 text-sm text-brand-gray">
+                    <li>hello@ventus.ai</li>
+                    <li>San Francisco, CA</li>
+                    <li class="flex gap-4 mt-4">
+                        <a href="#" class="hover:text-brand-gold"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                        <a href="#" class="hover:text-brand-gold"><i class="fa-brands fa-twitter text-lg"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <footer class="bg-slate-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">
-                    <i class="fa-solid fa-cube text-xs"></i>
-                </div>
-                <span class="text-lg font-bold">Ventus.ai</span>
-            </div>
-            <div class="text-slate-400 text-sm">
-                &copy; 2024 Ventus AI Inc. San Francisco, CA.
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                <a href="#" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-            </div>
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 text-center text-xs text-brand-gray/50">
+            &copy; 2025 Ventus AI Inc. All rights reserved.
         </div>
     </footer>
 
