@@ -18,17 +18,12 @@
                     },
                     colors: {
                         brand: {
-                            dark: '#0B1221',
-                            gold: '#C6B5A0',
+                            dark: '#0B1221',    /* Deep Navy */
+                            gold: '#C6B5A0',    /* Gold Accent */
                             goldLight: '#E5DACE',
-                            gray: '#64748B',
-                            light: '#F8FAFC',
-                            surface: '#FFFFFF',
+                            gray: '#64748B',    /* Slate Gray */
+                            light: '#F8FAFC',   /* Background */
                         }
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #C6B5A0 0deg, rgba(11,18,33,0) 360deg)',
                     },
                     animation: {
                         'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -171,6 +166,26 @@
             position: absolute; border: 2px dashed #C6B5A0; background: rgba(198,181,160,0.1);
             border-radius: 4px; transition: all 0.3s ease; pointer-events: none; z-index: 10;
         }
+        
+        /* Logo Styling */
+        .logo-container {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(100%) opacity(0.6);
+            transition: all 0.3s ease;
+        }
+        .logo-container:hover {
+            filter: grayscale(0%) opacity(1);
+            transform: scale(1.05);
+        }
+        .logo-img {
+            max-height: 100%;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-gold selection:text-white">
@@ -301,15 +316,35 @@
         </div>
     </section>
 
-    <!-- Trusted By -->
+    <!-- Trusted By (UPDATED WITH REAL LOGOS) -->
     <section class="py-12 border-y border-slate-100 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-center text-brand-gray text-xs uppercase tracking-[0.3em] font-bold mb-12 opacity-70">Trusted by Operations Leaders</p>
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition duration-700">
-                <div class="text-xl font-bold text-slate-800 flex items-center gap-3"><i class="fa-solid fa-truck-fast text-brand-gold text-2xl"></i> InTek Freight</div>
-                <div class="text-xl font-bold text-slate-800 flex items-center gap-3"><i class="fa-solid fa-warehouse text-brand-gold text-2xl"></i> CAPACITY</div>
-                <div class="text-xl font-bold text-slate-800 flex items-center gap-3"><i class="fa-solid fa-bolt text-brand-gold text-2xl"></i> HYPERLUX</div>
-                <div class="text-xl font-bold text-slate-800 flex items-center gap-3"><i class="fa-solid fa-tooth text-brand-gold text-2xl"></i> Smilist</div>
+            <div class="flex flex-wrap justify-center items-center gap-16">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/intek_freight_and_logistics_inc_logo.jpeg" alt="Intek Freight" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/Capacity%20LLC%20logo.avif" alt="Capacity LLC" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/hyperlux%20logistics.png" alt="Hyperlux" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/Smilist%20logo.png" alt="The Smilist" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/canaan-xpress-llc-logo.webp" alt="Canaan Xpress" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/EmpiRx_Health_Navy_Logo.jpg" alt="EmpiRx Health" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/aviel%20solutions.jpg" alt="Aviel Solutions" class="logo-img">
+                </div>
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/xlin3225-sudo/ventus-website/main/One%20source%20logo.png" alt="One Source" class="logo-img">
+                </div>
             </div>
         </div>
     </section>
